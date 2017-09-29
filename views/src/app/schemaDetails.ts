@@ -48,3 +48,16 @@ export const allUsers = gql`
     }
 `;
 
+export const getInterestsOfUser = gql`
+    query getInterestsOfUser($userId: ID!) {
+        getInterestsOfUser(userId: $userId) {
+            _id
+            title
+            img
+            user
+            voteCount
+            votedBy
+        }
+    }
+`;
+

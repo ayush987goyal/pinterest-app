@@ -53,4 +53,14 @@ export class MongoService {
     });
   }
 
+  getInterestsOfaUser(id: string) {
+    return this.apollo.query({
+      query: schema.getInterestsOfUser,
+      variables: {
+        userId: id
+      },
+      fetchPolicy: 'network-only'
+    })
+  }
+
 }

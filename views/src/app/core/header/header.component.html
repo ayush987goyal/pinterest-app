@@ -24,7 +24,7 @@
   </div>
 </nav>
 
-<p-dialog header="Add new picture" [(visible)]="dialogVisible" [modal]="true">
+<p-dialog header="Add new picture" [(visible)]="dialogVisible" width="500" [modal]="true">
         <form (ngSubmit)="onAdd()" #f=ngForm>
             <div class="form-group">
                 <label for="url">Image URL</label>
