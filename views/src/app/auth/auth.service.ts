@@ -22,7 +22,7 @@ export class AuthService {
       this.userService.setUserId();
 
       this.zone.run(() => {
-        this.router.navigate(['']);
+        this.router.navigate(['/']);
       })
     }).catch((error) => {
       alert(error.message);

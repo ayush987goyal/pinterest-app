@@ -33,6 +33,8 @@ const typeDefs = `
         addUser(name: String!, email: String!, pic: String!): ID
 
         addInterest(title: String!, img: String!, userId: ID!): ID
+
+        removeInterest(interestId: ID!, userId: ID!): String
     }
 `;
 

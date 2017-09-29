@@ -7,7 +7,7 @@
           <ul class="nav navbar-nav">
                 <ng-template [ngIf]="isAuthenticated()">
                     <!-- <li routerLinkActive="active"><a routerLink="/home">Home</a></li> -->
-                    <li routerLinkActive="active"><a routerLink="/mypics">My pics</a></li>
+                    <li routerLinkActive="active"><a [routerLink]="['/mypics', userService.userId]">My pics</a></li>
                     <li><a style="cursor: pointer;" (click)="dialogVisible=true">Add pic</a></li>
                 </ng-template>
           </ul>

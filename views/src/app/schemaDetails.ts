@@ -61,3 +61,9 @@ export const getInterestsOfUser = gql`
     }
 `;
 
+export const removeInterest = gql`
+    mutation removeInterest($interestId: ID!, $userId:ID!) {
+        removeInterest(interestId: $interestId, userId: $userId)
+    }
+`;
+

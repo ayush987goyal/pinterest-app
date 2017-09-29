@@ -13,5 +13,6 @@
     <!-- <button><i class="fa fa-thumbs-o-up btn " aria-hidden="true"></i></button> -->
     <a style="cursor: pointer"><i class="fa fa-thumbs-o-up likeButton" aria-hidden="true"></i></a>
     {{interestDetails.voteCount}}
+    <button class="btn btn-danger deleteButton" *ngIf="isOwner()" (click)="onDelete()"><i class="fa fa-trash" aria-hidden="true"></i></button>
   </md-card-actions>
 </md-card>

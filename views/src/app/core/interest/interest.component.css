@@ -12,3 +12,7 @@ md-card-header {
     font-size: 20px;
     margin: 5px;
 }
+
+.deleteButton {
+    float: right;
+}

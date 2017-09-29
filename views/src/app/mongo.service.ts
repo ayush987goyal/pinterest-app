@@ -63,4 +63,14 @@ export class MongoService {
     })
   }
 
+  deleteInterest(interestId: string, userId: string) {
+    return this.apollo.mutate({
+      mutation: schema.removeInterest,
+      variables: {
+        interestId: interestId,
+        userId: userId
+      }
+    });
+  }
+
 }

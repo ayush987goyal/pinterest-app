@@ -59,6 +59,22 @@ module.exports = {
                 }
             );
             return response.insertedIds[0];
+        },
+
+        removeInterest: async (root, data, {mongo: {Users, Interests}}) => {
+            const response = await Interests.remove({_id: ObjectId(data.interestId)});
+
+            const newResponse = await Users.update(
+                {
+                    _id: ObjectId(data.userId)
+                },
+                {
+                    $pull: {
+                        interests: data.interestId
+                    }
+                }
+            );
+            return newResponse;
         }
 
     }
