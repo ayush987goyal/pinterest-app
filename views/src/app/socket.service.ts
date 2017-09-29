@@ -13,6 +13,38 @@ export class SocketService {
     this.socket = io(this.url);
   }
 
-  
+  addInterest(interestData: any) {
+    this.socket.emit('add-interest', interestData);
+  }
+
+  getInterestAdded() {
+    let observable = new Observable((observer) => {
+
+      this.socket.on('interestAdded', (data) => {
+        observer.next(data.interestData);
+      })
+
+      return () => {
+        this.socket.disconnect();
+      }
+    })
+    return observable;
+  }
+
+  removeInterest(interestId: string) {
+    this.socket.emit('remove-interest', interestId);
+  }
+
+  getInterestremoved() {
+    let observable = new Observable((observer) => {
+
+      this.socket.on('interestRemoved', (data) => {
+        observer.next(data.interestId);
+      })
+
+    })
+    return observable;
+  }
+
 
 }

@@ -10,8 +10,11 @@ import { UserService } from '../../user.service';
 })
 export class HomeComponent implements OnInit {
 
-  allInterestList: any;
+  allInterestList: any[] = [];
   isLoading: boolean = false;
+
+  addConnection;
+  removeConnection;
 
   constructor(private mongoService: MongoService, private socketService: SocketService, private userService: UserService) { }
 
@@ -19,20 +22,42 @@ export class HomeComponent implements OnInit {
     this.isLoading = true;
     this.mongoService.getAllInterests().subscribe(
       (data) => {
-        this.allInterestList = data.data['allInterests'];
-        // console.log(this.allInterestList);
+        for(let item of data.data['allInterests']){
+          this.allInterestList.push(item);
+        }
       },
       (err) => { console.log(err); }
     );
 
     this.mongoService.getAllUsers().subscribe(
       (data) => {
-        this.userService.allUsersList = data.data['allUsers'];
-        // console.log(this.userService.allUsersList);
+        for (const item of data.data['allUsers']) {
+          this.userService.allUsersList.push(item);
+        }
         this.isLoading = false;
       },
       (err) => { console.log(err); }
     );
+
+    this.addConnection = this.socketService.getInterestAdded().subscribe(
+      (interestData) => {
+        this.allInterestList.push(interestData);
+      }
+    );
+
+    this.removeConnection = this.socketService.getInterestremoved().subscribe(
+      (interestId) => {
+        // console.log(interestId);
+        let pos = this.allInterestList.map(e => {return e._id}).indexOf(interestId);
+        // console.log(pos);
+        this.allInterestList.splice(pos, 1);
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.addConnection.unsubscribe();
+    this.removeConnection.unsubscribe();
   }
 
 }

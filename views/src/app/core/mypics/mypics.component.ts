@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class MypicsComponent implements OnInit {
 
   isLoading: boolean = false;
-  myInterestList: any;
+  myInterestList: any[] = [];
 
   constructor(private userService: UserService, private mongoService: MongoService, private route: ActivatedRoute) { }
 
@@ -25,7 +25,10 @@ export class MypicsComponent implements OnInit {
         }
         this.mongoService.getInterestsOfaUser(id).subscribe(
           (data) => {
-            this.myInterestList = data.data['getInterestsOfUser'];
+            // this.myInterestList = data.data['getInterestsOfUser'];
+            for (const item of data.data['getInterestsOfUser']) {
+              this.myInterestList.push(item);
+            }
             this.isLoading = false;
           },
           (err) => { console.log(err); }

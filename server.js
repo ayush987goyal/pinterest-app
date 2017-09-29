@@ -36,6 +36,14 @@ var start = async() => {
 
         socket.on('disconnect', () => {
             console.log('User disconnected');
+        });
+
+        socket.on('add-interest', (data) => {
+            io.emit('interestAdded', {interestData: data});
+        });
+
+        socket.on('remove-interest', (data) => {
+            io.emit('interestRemoved', {interestId: data});
         })
 
     });

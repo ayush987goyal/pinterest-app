@@ -32,7 +32,7 @@ const typeDefs = `
     type Mutation {
         addUser(name: String!, email: String!, pic: String!): ID
 
-        addInterest(title: String!, img: String!, userId: ID!): ID
+        addInterest(title: String!, img: String!, userId: ID!): Interest
 
         removeInterest(interestId: ID!, userId: ID!): String
     }

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../../user.service';
 import { Router } from '@angular/router';
 import { MongoService } from '../../mongo.service';
+import { SocketService } from '../../socket.service';
 
 @Component({
   selector: 'app-interest',
@@ -16,7 +17,8 @@ export class InterestComponent implements OnInit {
   userPic: string = '';
   mainImg: string = '';
 
-  constructor(private userService: UserService, private router: Router, private mongoService: MongoService) { }
+  constructor(private userService: UserService, private router: Router, private mongoService: MongoService, 
+    private socketService: SocketService) { }
 
   ngOnInit() {
     let user = this.userService.userDetailsById(this.interestDetails.user);
@@ -45,6 +47,7 @@ export class InterestComponent implements OnInit {
     this.mongoService.deleteInterest(this.interestDetails._id, this.userService.userId).subscribe(
       (data) => {
         console.log(data);
+        this.socketService.removeInterest(this.interestDetails._id);
       },
       (err) => { console.log(err); }
     );

@@ -39,7 +39,8 @@ export class HeaderComponent implements OnInit {
     this.mongoService.addNewInterest(this.form.value.title, this.form.value.url, this.userService.userId).subscribe(
       (res) => {
         console.log(res);
-        this.router.navigate(['/mypics', this.userService.userId]);
+        this.router.navigate(['/']);
+        this.socketService.addInterest(res.data['addInterest']);
       },
       (err) => {
         console.log(err);

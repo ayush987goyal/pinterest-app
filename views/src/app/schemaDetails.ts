@@ -33,7 +33,14 @@ export const allInterests = gql`
 
 export const addInterest = gql`
     mutation addInterest($title: String!, $img: String!, $userId: ID!) {
-        addInterest(title: $title, img: $img, userId: $userId)
+        addInterest(title: $title, img: $img, userId: $userId) {
+            _id
+            title
+            img
+            user
+            voteCount
+            votedBy
+        }
     }
 `;
 

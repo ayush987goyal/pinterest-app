@@ -58,7 +58,7 @@ module.exports = {
                     }
                 }
             );
-            return response.insertedIds[0];
+            return Object.assign({_id: interestId}, newInterest);
         },
 
         removeInterest: async (root, data, {mongo: {Users, Interests}}) => {
