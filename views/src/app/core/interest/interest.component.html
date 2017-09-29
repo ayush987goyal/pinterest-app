@@ -1,0 +1,17 @@
+<md-card>
+  <md-card-header>
+    <img [src]="userPic" alt="avatar" md-card-avatar (error)="brokenAvatar($event)" (click)="onUserClick()" style="cursor: pointer">
+    <md-card-title>{{userName}}</md-card-title>
+  </md-card-header>
+  <img [src]="mainImg" alt="broken" md-card-image (error)="brokenUrl($event)">
+  <md-card-content>
+    <h3>
+      {{interestDetails.title}}
+    </h3>
+  </md-card-content>
+  <md-card-actions>
+    <!-- <button><i class="fa fa-thumbs-o-up btn " aria-hidden="true"></i></button> -->
+    <i class="fa fa-thumbs-o-up btn btn-primary" aria-hidden="true"></i>
+    {{interestDetails.voteCount}}
+  </md-card-actions>
+</md-card>

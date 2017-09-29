@@ -1,0 +1,9 @@
+md-card {
+    width: 200px;
+    margin: 5px;
+    border-radius: 3%;
+}
+
+md-card-header {
+    margin-bottom: 5px;
+}

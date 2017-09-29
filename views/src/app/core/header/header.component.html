@@ -1,13 +1,14 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
       <div class="navbar-header">
-          <a style="cursor: pointer;" routerLink="/home" class="navbar-brand">Pinterest App</a>
+          <a style="cursor: pointer;" routerLink="/" class="navbar-brand">Pinterest App</a>
       </div>
       <div class=" collapse navbar-collapse">
           <ul class="nav navbar-nav">
                 <ng-template [ngIf]="isAuthenticated()">
-                    <li routerLinkActive="active"><a routerLink="/home">Home</a></li>
+                    <!-- <li routerLinkActive="active"><a routerLink="/home">Home</a></li> -->
                     <li routerLinkActive="active"><a routerLink="/mypics">My pics</a></li>
+                    <li><a style="cursor: pointer;" (click)="dialogVisible=true">Add pic</a></li>
                 </ng-template>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -15,10 +16,25 @@
                     <li><a style="cursor: pointer;" (click)="onSignIn()">Login</a></li>
                 </ng-template>
                 <ng-template [ngIf]="isAuthenticated()">
-                    <li><a style="cursor: pointer;">Hello, {{authService.userName}}</a></li>
+                    <li><a style="cursor: pointer;">Hello, {{userService.userName}}</a></li>
                     <li><a style="cursor: pointer;" (click)="onSignOut()">Logout</a></li>
                 </ng-template>
           </ul>
       </div>
   </div>
 </nav>
+
+<p-dialog header="Add new picture" [(visible)]="dialogVisible" [modal]="true">
+        <form (ngSubmit)="onAdd()" #f=ngForm>
+            <div class="form-group">
+                <label for="url">Image URL</label>
+                <input type="text" id="url" name="url" class="form-control" ngModel required>
+            </div>
+            <div class="form-group">
+                <label for="title">Image Title</label>
+                <input type="text" id="title" name="title" class="form-control" ngModel required>
+            </div>
+            <button type="submit" class="btn btn-success" [disabled]="!f.valid">Add</button>
+            <button type="button" class="btn btn-danger" (click)="dialogVisible=false">Cancel</button>
+        </form>
+</p-dialog>
