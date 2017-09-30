@@ -6,7 +6,8 @@ import { environment } from '../environments/environment.prod';
 @Injectable()
 export class SocketService {
 
-  private url = 'http://localhost:3000';
+  // private url = 'http://localhost:3000';
+  private url = '/';
   private socket;
 
   constructor() {

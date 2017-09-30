@@ -45,11 +45,11 @@ export class InterestComponent implements OnInit {
     // this.votedBy = this.interestDetails.votedBy;
   }
 
-  brokenUrl() {
+  brokenUrl(event) {
     this.mainImg = "http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder.png";
   }
 
-  brokenAvatar() {
+  brokenAvatar(event) {
     this.userPic = "http://style.anu.edu.au/_anu/4/images/placeholders/person.png";
   }
 
