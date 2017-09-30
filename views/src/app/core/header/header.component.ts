@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onSignIn() {
+    this.router.navigate(['/dummy']);
     this.authService.onSignInTwitter();
   }
 

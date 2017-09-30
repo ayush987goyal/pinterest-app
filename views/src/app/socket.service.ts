@@ -46,5 +46,22 @@ export class SocketService {
     return observable;
   }
 
+  changeVote(interestId: string, userId: string[], voteCount: number) {
+    let obj = {
+      interestId: interestId, userId: userId, voteCount: voteCount
+    };
+    this.socket.emit('change-vote', obj);
+  }
+
+  getVoteChanged() {
+    let observable = new Observable((observer) => {
+
+      this.socket.on('voteChanged', (data) => {
+        observer.next(data.voteDetails);
+      })
+    })
+    return observable;
+  }
+
 
 }

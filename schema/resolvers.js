@@ -75,6 +75,21 @@ module.exports = {
                 }
             );
             return newResponse;
+        },
+
+        updateVote: async (root, data, {mongo: {Users, Interests}}) => {
+            const response = await Interests.update(
+                {
+                    _id: ObjectId(data.interestId)
+                },
+                {
+                    $set:{
+                        voteCount: data.voteCount,
+                        votedBy: data.userId
+                    }
+                }
+            );
+            return response;
         }
 
     }

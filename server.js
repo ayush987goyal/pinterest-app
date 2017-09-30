@@ -46,6 +46,10 @@ var start = async() => {
             io.emit('interestRemoved', {interestId: data});
         })
 
+        socket.on('change-vote', (data) => {
+            io.emit('voteChanged', {voteDetails: data});
+        })
+
     });
 
     // app.get('/*', (req, res) => {

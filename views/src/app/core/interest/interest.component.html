@@ -11,8 +11,8 @@
   </md-card-content>
   <md-card-actions>
     <!-- <button><i class="fa fa-thumbs-o-up btn " aria-hidden="true"></i></button> -->
-    <a style="cursor: pointer"><i class="fa fa-thumbs-o-up likeButton" aria-hidden="true"></i></a>
-    {{interestDetails.voteCount}}
+    <button class="btn btn-primary-outline" [disabled]="!isAuthenticated() || isOwner()" (click)="onVote()"><i class="fa fa-thumbs-o-up likeButton" [class.fa-thumbs-up]="hasVoted()" aria-hidden="true"></i></button>
+    {{voteCount}}
     <button class="btn btn-danger deleteButton" *ngIf="isOwner()" (click)="onDelete()"><i class="fa fa-trash" aria-hidden="true"></i></button>
   </md-card-actions>
 </md-card>

@@ -8,7 +8,7 @@ const typeDefs = `
         img: String!,
         user: ID!,
         voteCount: Int!,
-        votedBy: [String]!
+        votedBy: [ID]!
     }
 
     type User {
@@ -35,6 +35,8 @@ const typeDefs = `
         addInterest(title: String!, img: String!, userId: ID!): Interest
 
         removeInterest(interestId: ID!, userId: ID!): String
+
+        updateVote(interestId: ID!, userId: [ID]!, voteCount: Int!): String
     }
 `;
 

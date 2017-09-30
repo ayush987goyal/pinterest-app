@@ -24,6 +24,7 @@ import { MongoService } from './mongo.service';
 import { UserService } from './user.service';
 import { InterestComponent } from './core/interest/interest.component';
 import { SocketService } from './socket.service';
+import { DummyComponent } from './core/dummy/dummy.component';
 
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({
@@ -41,7 +42,8 @@ export function provideClient(): ApolloClient {
     HeaderComponent,
     HomeComponent,
     MypicsComponent,
-    InterestComponent
+    InterestComponent,
+    DummyComponent
   ],
   imports: [
     BrowserModule,

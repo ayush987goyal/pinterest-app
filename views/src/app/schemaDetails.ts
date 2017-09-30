@@ -74,3 +74,9 @@ export const removeInterest = gql`
     }
 `;
 
+export const updateVote = gql`
+    mutation updateVote($interestId: ID!, $userId: [ID]!, $voteCount: Int!) {
+        updateVote(interestId: $interestId, userId: $userId, voteCount: $voteCount)
+    }
+`;
+

@@ -73,4 +73,15 @@ export class MongoService {
     });
   }
 
+  updateTheVote(interestId: string, userId: string[], voteCount: number) {
+    return this.apollo.mutate({
+      mutation: schema.updateVote,
+      variables: {
+        interestId: interestId,
+        userId: userId,
+        voteCount: voteCount
+      }
+    });
+  }
+
 }
