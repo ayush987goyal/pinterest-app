@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
     this.dialogVisible = false;
     this.mongoService.addNewInterest(this.form.value.title, this.form.value.url, this.userService.userId).subscribe(
       (res) => {
-        console.log(res);
+        // console.log(res);
         this.router.navigate(['/']);
         this.socketService.addInterest(res.data['addInterest']);
       },

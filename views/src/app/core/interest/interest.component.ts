@@ -34,7 +34,7 @@ export class InterestComponent implements OnInit {
     for (const item of this.interestDetails.votedBy) {
       this.votedBy.push(item);
     }
-    this.socketService.getVoteChanged().subscribe(
+    this.voteConnection = this.socketService.getVoteChanged().subscribe(
       (data) => {
         if(data['interestId'] === this.interestDetails._id) {
           this.voteCount = data['voteCount'];
@@ -96,11 +96,14 @@ export class InterestComponent implements OnInit {
     }
     this.mongoService.updateTheVote(this.interestDetails._id, this.votedBy, this.voteCount).subscribe(
       (res) => {
-        console.log(res);
+        // console.log(res);
         this.socketService.changeVote(this.interestDetails._id, this.votedBy, this.voteCount);
       },
       (err) => { console.log(err);}
     );
   }
 
+  ngOnDestroy() {
+    this.voteConnection.unsubscribe();
+  }
 }

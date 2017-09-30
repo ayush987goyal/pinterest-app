@@ -25,9 +25,9 @@ export class SocketService {
         observer.next(data.interestData);
       })
 
-      return () => {
-        this.socket.disconnect();
-      }
+      // return () => {
+      //   this.socket.disconnect();
+      // }
     })
     return observable;
   }
@@ -62,6 +62,10 @@ export class SocketService {
       })
     })
     return observable;
+  }
+
+  disconnectUser() {
+    this.socket.disconnecst();
   }
 
 
